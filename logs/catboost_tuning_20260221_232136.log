@@ -1,0 +1,119 @@
+================================================================================
+CATBOOST HYPERPARAMETER TUNING — OPTUNA
+================================================================================
+
+Dataset shape : 1,006 rows × 45 columns
+Target column : fiyat_log
+Trials        : 75
+
+--------------------------------------------------------------------------------
+   Trial    Mean RMSE  Best Params
+--------------------------------------------------------------------------------
+       1     0.203705  iterations=500, learning_rate=0.17254716573280354, depth=9, subsample=0.8394633936788146, colsample_bylevel=0.6624074561769746, l2_leaf_reg=0.004207053950287938, min_data_in_leaf=2 ← best
+       2     0.190400  iterations=893, learning_rate=0.06054365855469246, depth=8, subsample=0.608233797718321, colsample_bylevel=0.9879639408647978, l2_leaf_reg=2.1368329072358767, min_data_in_leaf=5 ← best
+       3     0.198704  iterations=345, learning_rate=0.017322667470546258, depth=6, subsample=0.8099025726528951, colsample_bylevel=0.7727780074568463, l2_leaf_reg=0.014618962793704957, min_data_in_leaf=13
+       4     0.194668  iterations=311, learning_rate=0.023993242906812727, depth=6, subsample=0.7824279936868144, colsample_bylevel=0.9140703845572055, l2_leaf_reg=0.006290644294586149, min_data_in_leaf=11
+       5     0.207392  iterations=674, learning_rate=0.011492999300221412, depth=8, subsample=0.6682096494749166, colsample_bylevel=0.6260206371941118, l2_leaf_reg=6.245139574743075, min_data_in_leaf=20
+       6     0.185915  iterations=847, learning_rate=0.0249064396938244, depth=4, subsample=0.8736932106048627, colsample_bylevel=0.7760609974958406, l2_leaf_reg=0.003077180271250686, min_data_in_leaf=10 ← best
+       7     0.190048  iterations=227, learning_rate=0.15242391728466367, depth=5, subsample=0.8650089137415928, colsample_bylevel=0.7246844304357644, l2_leaf_reg=0.12030178871154672, min_data_in_leaf=11
+       8     0.207121  iterations=348, learning_rate=0.18258230439200238, depth=9, subsample=0.9757995766256756, colsample_bylevel=0.9579309401710595, l2_leaf_reg=0.24637685958997463, min_data_in_leaf=19
+       9     0.215049  iterations=270, learning_rate=0.017987863473362915, depth=4, subsample=0.7301321323053057, colsample_bylevel=0.7554709158757928, l2_leaf_reg=0.01217295809836997, min_data_in_leaf=17
+      10     0.188489  iterations=485, learning_rate=0.023200867504756827, depth=7, subsample=0.6563696899899051, colsample_bylevel=0.9208787923016158, l2_leaf_reg=0.0019870215385428634, min_data_in_leaf=20
+      11     0.188142  iterations=982, learning_rate=0.05334353369227191, depth=4, subsample=0.9481974559098771, colsample_bylevel=0.8560354009870224, l2_leaf_reg=0.04223917621926565, min_data_in_leaf=6
+      12     0.190618  iterations=985, learning_rate=0.05156911709595948, depth=4, subsample=0.9435706254994662, colsample_bylevel=0.8469817891972085, l2_leaf_reg=0.052166826535988725, min_data_in_leaf=6
+      13     0.186266  iterations=780, learning_rate=0.08223080632860093, depth=4, subsample=0.90981261160422, colsample_bylevel=0.8355571231214669, l2_leaf_reg=0.0011890082119398588, min_data_in_leaf=7
+      14     0.190257  iterations=752, learning_rate=0.08818582564434264, depth=5, subsample=0.8882734549912698, colsample_bylevel=0.813154008229878, l2_leaf_reg=0.001030408764726463, min_data_in_leaf=14
+      15     0.184259  iterations=788, learning_rate=0.03280306650993514, depth=5, subsample=0.9094815277428518, colsample_bylevel=0.7069944452496908, l2_leaf_reg=0.0013994801238664764, min_data_in_leaf=8 ← best
+      16     0.184098  iterations=838, learning_rate=0.033604960514307364, depth=5, subsample=0.9953713473377377, colsample_bylevel=0.701341904990259, l2_leaf_reg=0.33445475452636536, min_data_in_leaf=9 ← best
+      17     0.184334  iterations=647, learning_rate=0.03577259992335749, depth=6, subsample=0.9930695426920796, colsample_bylevel=0.6772876502180768, l2_leaf_reg=0.5028066187375427, min_data_in_leaf=1
+      18     0.183803  iterations=559, learning_rate=0.03695757989673786, depth=5, subsample=0.930573919743892, colsample_bylevel=0.7099511354894406, l2_leaf_reg=0.8983622911378986, min_data_in_leaf=9 ← best
+      19     0.185544  iterations=516, learning_rate=0.036915728403864805, depth=7, subsample=0.9930402263822836, colsample_bylevel=0.6005812388501307, l2_leaf_reg=0.9676180195451545, min_data_in_leaf=14
+      20     0.220859  iterations=557, learning_rate=0.010456330127797035, depth=10, subsample=0.9406069544760227, colsample_bylevel=0.7207911351924502, l2_leaf_reg=9.764852477025425, min_data_in_leaf=4
+      21     0.184114  iterations=405, learning_rate=0.07469635825086576, depth=5, subsample=0.7729171616358969, colsample_bylevel=0.6586801730089119, l2_leaf_reg=2.534650858202411, min_data_in_leaf=8
+      22     0.184740  iterations=421, learning_rate=0.07913611703498515, depth=5, subsample=0.7597178593275226, colsample_bylevel=0.6553086909620808, l2_leaf_reg=1.9885151407152195, min_data_in_leaf=9
+      23     0.190335  iterations=614, learning_rate=0.11244060190030755, depth=6, subsample=0.7176816843408186, colsample_bylevel=0.6900285542184091, l2_leaf_reg=0.4799537004385163, min_data_in_leaf=12
+      24     0.188055  iterations=421, learning_rate=0.04238609313957643, depth=5, subsample=0.8069410260856267, colsample_bylevel=0.6395418838590748, l2_leaf_reg=2.9128776066662985, min_data_in_leaf=9
+      25     0.187251  iterations=711, learning_rate=0.06598713114487716, depth=6, subsample=0.838817870015776, colsample_bylevel=0.729737336774257, l2_leaf_reg=0.6536782982890493, min_data_in_leaf=3
+      26     0.187322  iterations=574, learning_rate=0.02943420632076771, depth=7, subsample=0.7332449703942683, colsample_bylevel=0.6131073650990674, l2_leaf_reg=0.25151711845220037, min_data_in_leaf=8
+      27     0.185077  iterations=424, learning_rate=0.12799521142768702, depth=5, subsample=0.9611252390124919, colsample_bylevel=0.7511604091499674, l2_leaf_reg=1.4451882470121205, min_data_in_leaf=15
+      28     0.185146  iterations=899, learning_rate=0.045224134285268724, depth=6, subsample=0.9244434235777199, colsample_bylevel=0.6823876071666655, l2_leaf_reg=5.132943075799621, min_data_in_leaf=10
+      29     0.197000  iterations=452, learning_rate=0.018012575472394887, depth=5, subsample=0.850389722257844, colsample_bylevel=0.7958285482324736, l2_leaf_reg=0.21663732840153724, min_data_in_leaf=7
+      30     0.187571  iterations=531, learning_rate=0.10745346692334497, depth=4, subsample=0.8301818466562029, colsample_bylevel=0.6493683700479091, l2_leaf_reg=0.991100593277242, min_data_in_leaf=4
+      31     0.189805  iterations=590, learning_rate=0.06128154077390162, depth=8, subsample=0.772599352846451, colsample_bylevel=0.6737912196322183, l2_leaf_reg=3.483924947786074, min_data_in_leaf=12
+      32     0.184878  iterations=824, learning_rate=0.03215821832294227, depth=5, subsample=0.9096027395857842, colsample_bylevel=0.7055831204972748, l2_leaf_reg=0.09099237909899578, min_data_in_leaf=8
+      33     0.184472  iterations=719, learning_rate=0.042502469775106855, depth=5, subsample=0.9706414110969899, colsample_bylevel=0.7097271858898083, l2_leaf_reg=0.4117173677461156, min_data_in_leaf=9
+      34     0.184922  iterations=900, learning_rate=0.02840163632140823, depth=6, subsample=0.998093942879265, colsample_bylevel=0.7506219321416683, l2_leaf_reg=0.9982907192042509, min_data_in_leaf=6
+      35     0.189764  iterations=802, learning_rate=0.013876896529303066, depth=5, subsample=0.9014712716521558, colsample_bylevel=0.6635797952095502, l2_leaf_reg=0.014569838535121407, min_data_in_leaf=8
+      36     0.185217  iterations=935, learning_rate=0.02149263858079145, depth=7, subsample=0.9266671297736626, colsample_bylevel=0.7007334589895385, l2_leaf_reg=1.7542915416007894, min_data_in_leaf=5
+      37     0.185914  iterations=662, learning_rate=0.06987461300840049, depth=4, subsample=0.8206375789034319, colsample_bylevel=0.6285497805979177, l2_leaf_reg=0.030746902681753164, min_data_in_leaf=11
+      38     0.187004  iterations=360, learning_rate=0.05199653467552627, depth=6, subsample=0.8767322073928354, colsample_bylevel=0.7781361981263158, l2_leaf_reg=0.006893071619318832, min_data_in_leaf=10
+      39     0.184899  iterations=847, learning_rate=0.03624112366307445, depth=5, subsample=0.6916162584581081, colsample_bylevel=0.7400588722523457, l2_leaf_reg=0.13779267885093174, min_data_in_leaf=12
+      40     0.184690  iterations=743, learning_rate=0.03072561800813943, depth=6, subsample=0.6261514157721404, colsample_bylevel=0.6431576081050254, l2_leaf_reg=0.06821264888650964, min_data_in_leaf=7
+      41     0.212913  iterations=298, learning_rate=0.02577004457283075, depth=4, subsample=0.7891400809553435, colsample_bylevel=0.7681897658007157, l2_leaf_reg=3.8781434271040345, min_data_in_leaf=9
+      42     0.184856  iterations=654, learning_rate=0.036207482340160024, depth=6, subsample=0.9737255250137801, colsample_bylevel=0.6745055382800385, l2_leaf_reg=0.4045635359532316, min_data_in_leaf=1
+      43     0.184845  iterations=614, learning_rate=0.04552986116644632, depth=5, subsample=0.9883561823839692, colsample_bylevel=0.6938957931951185, l2_leaf_reg=0.6075013141662351, min_data_in_leaf=2
+      44     0.185686  iterations=703, learning_rate=0.0367838840252669, depth=6, subsample=0.9554477427050652, colsample_bylevel=0.7202827102768826, l2_leaf_reg=0.19959620426103075, min_data_in_leaf=5
+      45     0.191406  iterations=214, learning_rate=0.05482139343715346, depth=5, subsample=0.9315172508543945, colsample_bylevel=0.9994563730237144, l2_leaf_reg=1.2506095684691132, min_data_in_leaf=1
+      46     0.197146  iterations=484, learning_rate=0.019272825659927224, depth=4, subsample=0.8550444178036609, colsample_bylevel=0.6656988231248271, l2_leaf_reg=0.02388526885599158, min_data_in_leaf=18
+      47     0.188242  iterations=854, learning_rate=0.015556568281901233, depth=7, subsample=0.9798656610624306, colsample_bylevel=0.8822257965740854, l2_leaf_reg=2.4437903931918945, min_data_in_leaf=16
+      48     0.185464  iterations=780, learning_rate=0.02194277052856357, depth=5, subsample=0.8867563230355997, colsample_bylevel=0.6254248932573074, l2_leaf_reg=0.319200198249615, min_data_in_leaf=13
+      49     0.185744  iterations=639, learning_rate=0.026494126334614423, depth=6, subsample=0.9579844653346443, colsample_bylevel=0.6871238217527756, l2_leaf_reg=0.6698187446744812, min_data_in_leaf=4
+      50     0.193564  iterations=379, learning_rate=0.032812580507117044, depth=4, subsample=0.7592138872959614, colsample_bylevel=0.7271283761178216, l2_leaf_reg=0.15307443932143489, min_data_in_leaf=7
+      51     0.204215  iterations=690, learning_rate=0.0465545264195495, depth=10, subsample=0.9994809692344969, colsample_bylevel=0.7889973893836382, l2_leaf_reg=0.0032081479340537885, min_data_in_leaf=11
+      52     0.184086  iterations=719, learning_rate=0.040986629146342234, depth=5, subsample=0.9767278737455103, colsample_bylevel=0.7072395165044372, l2_leaf_reg=0.3077880474702931, min_data_in_leaf=9
+      53     0.185926  iterations=743, learning_rate=0.03963416415089295, depth=5, subsample=0.9427488028875494, colsample_bylevel=0.7030103549275146, l2_leaf_reg=0.09284875121228102, min_data_in_leaf=8
+      54     0.184190  iterations=769, learning_rate=0.032346310470825396, depth=5, subsample=0.9698778968584257, colsample_bylevel=0.6574224247913324, l2_leaf_reg=0.31453176308321656, min_data_in_leaf=10
+      55     0.184699  iterations=786, learning_rate=0.03248213374561638, depth=4, subsample=0.9669985664144898, colsample_bylevel=0.8152618835107205, l2_leaf_reg=0.2832025390042742, min_data_in_leaf=10
+      56     0.184268  iterations=819, learning_rate=0.02472747975728376, depth=5, subsample=0.9199054391398674, colsample_bylevel=0.6550095526364063, l2_leaf_reg=0.7342260825006524, min_data_in_leaf=9
+      57     0.188221  iterations=934, learning_rate=0.07322840876625085, depth=5, subsample=0.9809936502355675, colsample_bylevel=0.603265195489419, l2_leaf_reg=0.17368377054422351, min_data_in_leaf=11
+      58     0.188518  iterations=868, learning_rate=0.04922523401295132, depth=4, subsample=0.952222561802414, colsample_bylevel=0.7406977806528746, l2_leaf_reg=8.450569787224358, min_data_in_leaf=8
+      59     0.199517  iterations=764, learning_rate=0.058519309063473086, depth=9, subsample=0.9390867393016463, colsample_bylevel=0.7161214900209709, l2_leaf_reg=0.006027883845319365, min_data_in_leaf=10
+      60     0.184633  iterations=734, learning_rate=0.027475138162304544, depth=5, subsample=0.8993322051173911, colsample_bylevel=0.6281820721024544, l2_leaf_reg=0.0016814871057284923, min_data_in_leaf=6
+      61     0.186818  iterations=551, learning_rate=0.0411458393936783, depth=4, subsample=0.7930301289465164, colsample_bylevel=0.9385448512112796, l2_leaf_reg=0.3548840673754981, min_data_in_leaf=13
+      62     0.185155  iterations=799, learning_rate=0.022462075189499633, depth=5, subsample=0.9664625467486959, colsample_bylevel=0.6488772793349599, l2_leaf_reg=0.6960823722871884, min_data_in_leaf=9
+      63     0.184478  iterations=877, learning_rate=0.024639999422157888, depth=5, subsample=0.9227698974853069, colsample_bylevel=0.6553228176687841, l2_leaf_reg=0.8579417192819783, min_data_in_leaf=9
+      64     0.184386  iterations=837, learning_rate=0.033408047378813165, depth=5, subsample=0.9232555239234038, colsample_bylevel=0.6835001277765697, l2_leaf_reg=0.5038948839212828, min_data_in_leaf=7
+      65     0.183910  iterations=813, learning_rate=0.029690821199843603, depth=5, subsample=0.9095255860621655, colsample_bylevel=0.6614095137762472, l2_leaf_reg=1.4477369383454584, min_data_in_leaf=10
+      66     0.191970  iterations=260, learning_rate=0.039614442134333114, depth=6, subsample=0.9846560534113005, colsample_bylevel=0.666520951573751, l2_leaf_reg=1.4912814583830503, min_data_in_leaf=10
+      67     0.187879  iterations=931, learning_rate=0.029018849566909005, depth=8, subsample=0.7440816374414096, colsample_bylevel=0.7646949393948328, l2_leaf_reg=4.736562592718306, min_data_in_leaf=12
+      68     0.193029  iterations=766, learning_rate=0.19745602576641044, depth=5, subsample=0.8689768703899654, colsample_bylevel=0.7364668514557894, l2_leaf_reg=2.039620235510642, min_data_in_leaf=11
+      69     0.186557  iterations=799, learning_rate=0.020051075105938065, depth=5, subsample=0.891707759755514, colsample_bylevel=0.6955821316949737, l2_leaf_reg=1.145069868480749, min_data_in_leaf=8
+      70     0.183932  iterations=687, learning_rate=0.08636583356504902, depth=4, subsample=0.9085941267019798, colsample_bylevel=0.6347373976175261, l2_leaf_reg=3.0749398779258823, min_data_in_leaf=7
+      71     0.184761  iterations=619, learning_rate=0.1007810217271494, depth=4, subsample=0.949419970363561, colsample_bylevel=0.6357087986962041, l2_leaf_reg=2.456670364539804, min_data_in_leaf=7
+      72     0.185643  iterations=680, learning_rate=0.12367823676907208, depth=4, subsample=0.909955528587142, colsample_bylevel=0.6115273826181085, l2_leaf_reg=3.0122278763087484, min_data_in_leaf=8
+      73     0.187769  iterations=723, learning_rate=0.08604242185813207, depth=5, subsample=0.9381691513950757, colsample_bylevel=0.6753037948403394, l2_leaf_reg=1.432814163480951, min_data_in_leaf=10
+      74     0.187229  iterations=699, learning_rate=0.029941005556661508, depth=6, subsample=0.9121708917750742, colsample_bylevel=0.6180953701365532, l2_leaf_reg=5.081345718923124, min_data_in_leaf=9
+      75     0.190742  iterations=824, learning_rate=0.03499034857570943, depth=4, subsample=0.8202165965938193, colsample_bylevel=0.711907040220604, l2_leaf_reg=7.3041734617751395, min_data_in_leaf=5
+
+================================================================================
+BEST RESULT
+================================================================================
+
+  Mean RMSE : 0.183803  (± 0.009603)
+
+  Best Parameters:
+    iterations             = 559
+    learning_rate          = 0.03695757989673786
+    depth                  = 5
+    subsample              = 0.930573919743892
+    colsample_bylevel      = 0.7099511354894406
+    l2_leaf_reg            = 0.8983622911378986
+    min_data_in_leaf       = 9
+    random_seed            = 42
+
+================================================================================
+FINAL PARAMETERS (copy-paste ready)
+================================================================================
+
+CatBoostRegressor(
+    iterations=559,
+    learning_rate=0.03695757989673786,
+    depth=5,
+    subsample=0.930573919743892,
+    colsample_bylevel=0.7099511354894406,
+    l2_leaf_reg=0.8983622911378986,
+    min_data_in_leaf=9,
+    random_seed=42,
+    verbose=0,
+)
+================================================================================

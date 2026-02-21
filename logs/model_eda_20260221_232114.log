@@ -1,0 +1,154 @@
+================================================================================
+MODEL-FOCUSED EDA
+================================================================================
+Dataset: 1,258 rows × 37 columns
+Target: fiyat
+================================================================================
+PRICE DISTRIBUTION ANALYSIS
+================================================================================
+
+Price Statistics:
+  Mean: 45,757 ₺
+  Median: 37,000 ₺
+  Std: 29,285 ₺
+  Min: 8,000 ₺
+  Max: 250,000 ₺
+  Range: 242,000 ₺
+
+Distribution Shape:
+  Skewness: 2.420 (right-skewed)
+  Kurtosis: 7.685 (heavy-tailed)
+
+Log-Transformed Price:
+  Skewness: 0.677 (improvement: 1.743)
+  Kurtosis: 0.515 (improvement: 7.170)
+
+Log transformation RECOMMENDED - reduces skewness
+
+Percentiles:
+   1%:     16,000 ₺
+   5%:     20,000 ₺
+  10%:     23,000 ₺
+  25%:     27,312 ₺
+  50%:     37,000 ₺
+  75%:     52,000 ₺
+  90%:     80,000 ₺
+  95%:    108,300 ₺
+  99%:    153,575 ₺
+
+================================================================================
+PRICE CORRELATION ANALYSIS
+================================================================================
+
+Numeric Features Correlation with Price (sorted):
+Feature                    Correlation Strength
+--------------------------------------------------------------------------------
+net_m2                           0.627  MODERATE
+banyo_sayisi                     0.588  MODERATE
+kat_sayisi                       0.566  MODERATE
+oda_sayisi                       0.508  MODERATE
+toplam_oda                       0.505  MODERATE
+bulundugu_kat                    0.294  WEAK
+salon_sayisi                     0.236  WEAK
+bina_yasi                       -0.086  VERY WEAK
+
+Key Features Analysis:
+  net_m2: r = 0.627
+  toplam_oda: r = 0.505
+  bina_yasi: r = -0.086
+  kat_sayisi: r = 0.566
+  bulundugu_kat: r = 0.294
+
+================================================================================
+DUMMY VARIABLES IMPACT ON PRICE
+================================================================================
+
+Mahalle Impact (n=17 categories):
+  Mahalle                             Mean Price    Median Price    Count
+  ---------------------------------------------------------------------------
+  Barbaros                              76,821 ₺         70,500 ₺       146
+  Atatürk Mh.                           71,302 ₺         65,000 ₺       179
+  Yenişehir Mh.                         56,250 ₺         55,000 ₺        18
+  Küçükbakkalköy Mh.                    55,851 ₺         47,500 ₺       111
+  Aşıkveysel Mh.                        38,543 ₺         39,000 ₺        23
+  İçerenköy Mh.                         37,692 ₺         37,000 ₺       147
+  Örnek Mh.                             37,675 ₺         36,000 ₺        86
+  Fetih                                 36,750 ₺         34,500 ₺        12
+  Esatpaşa Mh.                          35,091 ₺         34,000 ₺        55
+  Mevlana                               32,850 ₺         29,750 ₺        20
+  İnönü Mh.                             31,951 ₺         30,000 ₺       186
+  Yeni Çamlıca Mh.                      29,400 ₺         30,000 ₺        10
+  Kayışdağı Mh.                         28,733 ₺         28,000 ₺       210
+  Mustafa Kemal                         28,262 ₺         26,000 ₺        20
+  Ferhatpaşa Mh.                        25,621 ₺         26,000 ₺        24
+  Mimar Sinan                           20,875 ₺         22,500 ₺         8
+  Yeni Sahra                            19,500 ₺         20,500 ₺         3
+
+  Price range across mahalle: 57,321 ₺
+  Highest/Lowest ratio: 3.94x
+
+
+Isinma Impact (n=6 categories):
+  Heating Type                        Mean Price    Median Price    Count
+  ---------------------------------------------------------------------------
+  Merkezi Sistem                        61,158 ₺         53,000 ₺       380
+  Yerden Isıtma                         60,863 ₺         44,000 ₺        19
+  Doğalgaz                              38,971 ₺         32,500 ₺       843
+  Elektrik / Klima                      31,250 ₺         31,250 ₺         2
+  Yok                                   18,583 ₺         17,500 ₺         6
+  Soba                                  17,406 ₺         17,500 ₺         8
+
+  Price range across heating types: 43,752 ₺
+  Highest/Lowest ratio: 3.51x
+
+================================================================================
+OUTLIER IMPACT ANALYSIS
+================================================================================
+
+Price Outliers (IQR method):
+  IQR: 24,688 ₺
+  Bounds: [-9,719, 89,031] ₺
+  Outliers: 100 (7.9%)
+
+  Outlier price range: 90,000 - 250,000 ₺
+  Mean price (with outliers): 45,757 ₺
+  Mean price (without outliers): 38,933 ₺
+
+  Outlier characteristics:
+    net_m2: outlier mean = 143.5, normal mean = 74.9 (diff: +91.6%)
+    toplam_oda: outlier mean = 4.2, normal mean = 2.8 (diff: +48.6%)
+    banyo_sayisi: outlier mean = 2.1, normal mean = 1.2 (diff: +80.7%)
+
+Recommendation:
+Moderate outlier percentage (7.9%) - monitor model performance
+
+================================================================================
+FEATURE SIGNAL vs NOISE EVALUATION
+================================================================================
+
+Feature Categorization by Price Correlation:
+
+STRONG SIGNAL (|r| > 0.4) - 5 features:
+    net_m2: r = 0.627
+    banyo_sayisi: r = 0.588
+    kat_sayisi: r = 0.566
+    oda_sayisi: r = 0.508
+    toplam_oda: r = 0.505
+
+MODERATE SIGNAL (0.2 < |r| ≤ 0.4) - 2 features:
+    bulundugu_kat: r = 0.294
+    salon_sayisi: r = 0.236
+
+WEAK SIGNAL (0.1 < |r| ≤ 0.2) - 0 features:
+
+NOISE (|r| ≤ 0.1) - 1 features:
+    bina_yasi: r = 0.086
+
+Recommendations:
+Focus on STRONG + MODERATE features for initial modeling
+Consider feature engineering for WEAK features
+Consider removing NOISE features to reduce overfitting
+
+================================================================================
+END OF REPORT
+================================================================================

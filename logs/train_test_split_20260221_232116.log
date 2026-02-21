@@ -1,0 +1,56 @@
+================================================================================
+TRAIN/TEST SPLIT REPORT
+================================================================================
+Input: 1,258 rows × 45 columns
+Test size: 20% | Train size: 80%
+Random state: 42
+
+Stratification key: mahalle (17 unique values)
+Mahalle distribution in full dataset:
+  Kayışdağı Mh.                    210 ( 16.7%)
+  İnönü Mh.                        186 ( 14.8%)
+  Atatürk Mh.                      179 ( 14.2%)
+  İçerenköy Mh.                    147 ( 11.7%)
+  Barbaros                         146 ( 11.6%)
+  Küçükbakkalköy Mh.               111 (  8.8%)
+  Örnek Mh.                         86 (  6.8%)
+  Esatpaşa Mh.                      55 (  4.4%)
+  Ferhatpaşa Mh.                    24 (  1.9%)
+  Aşıkveysel Mh.                    23 (  1.8%)
+  Mevlana                           20 (  1.6%)
+  Mustafa Kemal                     20 (  1.6%)
+  Yenişehir Mh.                     18 (  1.4%)
+  Fetih                             12 (  1.0%)
+  Yeni Çamlıca Mh.                  10 (  0.8%)
+  Mimar Sinan                        8 (  0.6%)
+  Yeni Sahra                         3 (  0.2%)
+
+Split result:
+  Train: 1,006 rows (80.0%)
+  Test:  252 rows (20.0%)
+
+Mahalle distribution comparison (Train | Test):
+  Mahalle                         Train N  Train %   Test N   Test %
+  ----------------------------------------------------------------------
+  Kayışdağı Mh.                       168    16.7%       42    16.7%
+  İnönü Mh.                           149    14.8%       37    14.7%
+  Atatürk Mh.                         143    14.2%       36    14.3%
+  İçerenköy Mh.                       118    11.7%       29    11.5%
+  Barbaros                            117    11.6%       29    11.5%
+  Küçükbakkalköy Mh.                   89     8.8%       22     8.7%
+  Örnek Mh.                            69     6.9%       17     6.7%
+  Esatpaşa Mh.                         44     4.4%       11     4.4%
+  Ferhatpaşa Mh.                       19     1.9%        5     2.0%
+  Aşıkveysel Mh.                       18     1.8%        5     2.0%
+  Mevlana                              16     1.6%        4     1.6%
+  Mustafa Kemal                        16     1.6%        4     1.6%
+  Yenişehir Mh.                        14     1.4%        4     1.6%
+  Fetih                                10     1.0%        2     0.8%
+  Yeni Çamlıca Mh.                      8     0.8%        2     0.8%
+  Mimar Sinan                           6     0.6%        2     0.8%
+  Yeni Sahra                            2     0.2%        1     0.4%
+
+Saved:
+  Train → c:\Users\danya\Desktop\R.E.P.A.S\data\splits\train.csv
+  Test  → c:\Users\danya\Desktop\R.E.P.A.S\data\splits\test.csv
+================================================================================

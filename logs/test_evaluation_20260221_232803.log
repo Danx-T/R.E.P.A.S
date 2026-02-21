@@ -1,0 +1,22 @@
+================================================================================
+TEST SET EVALUATION — CATBOOST
+================================================================================
+
+Test set shape : 252 rows × 45 columns
+
+Log-Space Metrics:
+  RMSE : 0.165251
+  MAE  : 0.124179
+  R²   : 0.896900
+
+Real Price Metrics (expm1 back-transform):
+  RMSE : 9,541 ₺
+  MAE  : 5,776 ₺
+  R²   : 0.897191
+
+Generalisation Check:
+  OOF RMSE  (log) : 0.184068
+  Test RMSE (log) : 0.165251
+  Delta           : -0.018817
+  → Test RMSE lower than OOF — unusually favourable test set
+================================================================================

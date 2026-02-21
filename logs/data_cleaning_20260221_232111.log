@@ -1,0 +1,17 @@
+================================================================================
+DATA CLEANING REPORT
+================================================================================
+Original: 1,258 rows × 28 columns
+
+Duplicates removed:
+  - ilan_no: 0 rows
+  - url: 0 rows
+
+Columns dropped (12):
+  - Metadata/identifiers (7): baslik, ilan_no, ilan_sahibi, telefon_is, telefon_cep, url, tarih
+  - Constant values (4): evin_durumu, il, ilce, emlak_tipi
+  - Highly correlated (1): brut_m2
+
+Final: 1,258 rows × 16 columns
+Saved to: c:\Users\danya\Desktop\R.E.P.A.S\data\processed\ataşehir_cleaned.csv
+================================================================================

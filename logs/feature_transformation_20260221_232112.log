@@ -1,0 +1,66 @@
+================================================================================
+FEATURE TRANSFORMATION REPORT
+================================================================================
+Original: 1,258 rows × 16 columns
+
+Dropped columns: kullanim_durumu, tapu_durumu
+
+1. oda_sayisi parsed -> oda_sayisi, salon_sayisi, toplam_oda
+   Unmapped values (NaN): 0
+
+2. Boolean encoding: balkon, asansor, otopark, esyali, site_icerisinde (Evet=True, Hayır=False)
+
+3. isinma grouped → 6 categories, then one-hot encoded
+   Unmapped values (NaN): 0
+   New columns: ['isinma_Doğalgaz', 'isinma_Elektrik / Klima', 'isinma_Merkezi Sistem', 'isinma_Soba', 'isinma_Yerden Isıtma', 'isinma_Yok']
+
+4. bina_yasi binned -> 7 groups, ordinal encoded (0-6)
+
+5. kat_sayisi binned -> 7 groups, ordinal encoded (0-6)
+
+6. bulundugu_kat mapped -> 10 groups, ordinal encoded (0-9)
+
+7. mahalle one-hot encoded -> 17 new columns
+
+Final: 1,258 rows x 37 columns
+Saved to: c:\Users\danya\Desktop\R.E.P.A.S\data\processed\ataşehir_transformed.csv
+
+Final columns (37):
+  - fiyat (int64)
+  - net_m2 (int64)
+  - oda_sayisi (float64)
+  - bina_yasi (int64)
+  - bulundugu_kat (float64)
+  - kat_sayisi (int64)
+  - banyo_sayisi (float64)
+  - balkon (bool)
+  - asansor (bool)
+  - otopark (bool)
+  - esyali (bool)
+  - site_icerisinde (bool)
+  - salon_sayisi (Int64)
+  - toplam_oda (float64)
+  - isinma_Doğalgaz (bool)
+  - isinma_Elektrik / Klima (bool)
+  - isinma_Merkezi Sistem (bool)
+  - isinma_Soba (bool)
+  - isinma_Yerden Isıtma (bool)
+  - isinma_Yok (bool)
+  - mahalle_Atatürk Mh. (bool)
+  - mahalle_Aşıkveysel Mh. (bool)
+  - mahalle_Barbaros (bool)
+  - mahalle_Esatpaşa Mh. (bool)
+  - mahalle_Ferhatpaşa Mh. (bool)
+  - mahalle_Fetih (bool)
+  - mahalle_Kayışdağı Mh. (bool)
+  - mahalle_Küçükbakkalköy Mh. (bool)
+  - mahalle_Mevlana (bool)
+  - mahalle_Mimar Sinan (bool)
+  - mahalle_Mustafa Kemal (bool)
+  - mahalle_Yeni Sahra (bool)
+  - mahalle_Yeni Çamlıca Mh. (bool)
+  - mahalle_Yenişehir Mh. (bool)
+  - mahalle_Örnek Mh. (bool)
+  - mahalle_İnönü Mh. (bool)
+  - mahalle_İçerenköy Mh. (bool)
+================================================================================

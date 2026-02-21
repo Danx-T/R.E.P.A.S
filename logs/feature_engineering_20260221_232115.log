@@ -1,0 +1,40 @@
+================================================================================
+FEATURE ENGINEERING REPORT
+================================================================================
+Input: 1,258 rows × 37 columns
+
+Target:
+  fiyat_log = log1p(fiyat)  [fiyat dropped]
+
+1. M2-Based Features:
+  m2_per_room = net_m2 / toplam_oda
+  room_density = toplam_oda / net_m2
+  bath_per_room = banyo_sayisi / toplam_oda
+
+2. Floor & Location Features:
+  floor_ratio = bulundugu_kat / kat_sayisi  (NaN if kat_sayisi == 0)
+  is_top_floor = (bulundugu_kat == kat_sayisi)
+  is_ground_floor = (bulundugu_kat == 0)  [ordinal 0 = Zemin Kat]
+
+3. Building Age Features:
+  is_new = (bina_yasi == 0)  [ordinal 0 = 0-5 years]
+  is_old = (bina_yasi >= 4)  [ordinal 4+ = 21+ years]
+
+New columns added (9): fiyat_log, m2_per_room, room_density, bath_per_room, floor_ratio, is_top_floor, is_ground_floor, is_new, is_old
+Final: 1,258 rows × 45 columns
+
+New Feature Statistics:
+Feature                    Mean        Std        Min        Max      NaN
+--------------------------------------------------------------------------------
+fiyat_log                10.587      0.507      8.987     12.429        0
+m2_per_room              27.205      5.998     10.000     60.000        0
+room_density              0.039      0.009      0.017      0.100        0
+bath_per_room             0.463      0.204      0.200      3.000        0
+floor_ratio               1.510      1.023      0.000      9.000      727
+is_top_floor              0.082      0.274      0.000      1.000        0
+is_ground_floor           0.021      0.145      0.000      1.000        0
+is_new                    0.141      0.348      0.000      1.000        0
+is_old                    0.266      0.442      0.000      1.000        0
+
+Saved to: c:\Users\danya\Desktop\R.E.P.A.S\data\processed\ataşehir_engineered.csv
+================================================================================

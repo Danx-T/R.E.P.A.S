@@ -1,0 +1,21 @@
+================================================================================
+FINAL REFIT — TRAIN + TEST — CATBOOST
+================================================================================
+
+Train rows : 1,006
+Test rows  : 252
+Total rows : 1,258
+Features   : 44
+
+Parameters:
+  iterations             = 559
+  learning_rate          = 0.03695757989673786
+  depth                  = 5
+  subsample              = 0.930573919743892
+  colsample_bylevel      = 0.7099511354894406
+  l2_leaf_reg            = 0.8983622911378986
+  min_data_in_leaf       = 9
+  random_seed            = 42
+
+Production model saved → c:\Users\danya\Desktop\R.E.P.A.S\models\catboost_production.cbm
+================================================================================

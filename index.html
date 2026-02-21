@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>R.E.P.A.S — Fiyat Tahmini</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card {
+      background: #1a1d27;
+      border: 1px solid #2d3148;
+      border-radius: 16px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 680px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-bottom: 0.35rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    input,
+    select {
+      width: 100%;
+      background: #0f1117;
+      border: 1px solid #2d3148;
+      border-radius: 8px;
+      color: #e2e8f0;
+      padding: 0.6rem 0.75rem;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #6366f1;
+    }
+
+    .toggle-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .toggle-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      background: #0f1117;
+      border: 1px solid #2d3148;
+      border-radius: 6px;
+      padding: 0.4rem 0.75rem;
+      transition: border-color 0.2s, background 0.2s;
+      user-select: none;
+      margin-bottom: 0;
+    }
+
+    .toggle-group input[type="checkbox"] {
+      display: none;
+    }
+
+    .toggle-group label.checked {
+      border-color: #6366f1;
+      background: #1e1f3a;
+      color: #a5b4fc;
+    }
+
+    .section-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #4b5563;
+      margin: 1.5rem 0 0.75rem;
+      font-weight: 600;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 1.75rem;
+      padding: 0.85rem;
+      border: none;
+      border-radius: 10px;
+      background: #6366f1;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    button:hover {
+      background: #4f46e5;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    button:disabled {
+      background: #374151;
+      cursor: not-allowed;
+    }
+
+    .result {
+      margin-top: 1.5rem;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      display: none;
+    }
+
+    .result.success {
+      background: #0d2a1f;
+      border: 1px solid #166534;
+    }
+
+    .result.error {
+      background: #2a0d0d;
+      border: 1px solid #7f1d1d;
+    }
+
+    .result .label {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 0.4rem;
+    }
+
+    .result .price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #34d399;
+    }
+
+    .result .error-msg {
+      font-size: 0.9rem;
+      color: #f87171;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>R.E.P.A.S</h1>
+    <p class="subtitle">Ataşehir Emlak Fiyat Tahmin Sistemi</p>
+
+    <form id="form">
+
+      <p class="section-title">Konum</p>
+      <div class="grid">
+        <div class="full">
+          <label>Mahalle</label>
+          <select id="mahalle" name="mahalle"></select>
+        </div>
+      </div>
+
+      <p class="section-title">Temel Bilgiler</p>
+      <div class="grid">
+        <div>
+          <label>Net m²</label>
+          <input type="number" name="net_m2" min="1" required />
+        </div>
+        <div>
+          <label>Banyo Sayısı</label>
+          <input type="number" name="banyo_sayisi" min="0" step="1" required />
+        </div>
+        <div>
+          <label>Oda Sayısı</label>
+          <input type="number" name="oda_sayisi" min="0" step="0.5" required />
+        </div>
+        <div>
+          <label>Salon Sayısı</label>
+          <input type="number" name="salon_sayisi" min="0" step="1" required />
+        </div>
+      </div>
+
+      <p class="section-title">Bina & Kat</p>
+      <div class="grid">
+        <div>
+          <label>Bina Yaşı</label>
+          <select id="bina_yasi" name="bina_yasi"></select>
+        </div>
+        <div>
+          <label>İsınma</label>
+          <select id="isinma" name="isinma"></select>
+        </div>
+        <div>
+          <label>Bulunduğu Kat</label>
+          <select id="bulundugu_kat" name="bulundugu_kat"></select>
+        </div>
+        <div>
+          <label>Bina Kat Sayısı</label>
+          <select id="kat_sayisi" name="kat_sayisi"></select>
+        </div>
+      </div>
+
+      <p class="section-title">Özellikler</p>
+      <div class="toggle-group" id="toggles">
+        <label><input type="checkbox" name="balkon" /> Balkon</label>
+        <label><input type="checkbox" name="asansor" /> Asansör</label>
+        <label><input type="checkbox" name="otopark" /> Otopark</label>
+        <label><input type="checkbox" name="esyali" /> Eşyalı</label>
+        <label><input type="checkbox" name="site_icerisinde" /> Site İçerisinde</label>
+      </div>
+
+      <button type="submit" id="btn">Tahmin Et</button>
+    </form>
+
+    <div class="result" id="result">
+      <div class="label">Tahmini Fiyat</div>
+      <div class="price" id="price-text"></div>
+      <div class="error-msg" id="error-text"></div>
+    </div>
+  </div>
+
+  <script>
+    // Populate a <select> with {label, value} pairs
+    function fillSelect(id, items) {
+      const el = document.getElementById(id);
+      items.forEach(({ label, value }) => {
+        const o = document.createElement('option');
+        o.value = value;
+        o.textContent = label;
+        el.appendChild(o);
+      });
+    }
+
+    // Populate a <select> with plain string options
+    function fillSelectStrings(id, items) {
+      const el = document.getElementById(id);
+      items.forEach(v => {
+        const o = document.createElement('option');
+        o.value = v; o.textContent = v;
+        el.appendChild(o);
+      });
+    }
+
+    fetch('/options').then(r => r.json()).then(data => {
+      fillSelectStrings('isinma', data.isinma);
+      fillSelectStrings('mahalle', data.mahalle);
+      fillSelect('bina_yasi', data.bina_yasi);
+      fillSelect('kat_sayisi', data.kat_sayisi);
+      fillSelect('bulundugu_kat', data.bulundugu_kat);
+    });
+
+    document.getElementById('toggles').addEventListener('change', e => {
+      if (e.target.type === 'checkbox')
+        e.target.parentElement.classList.toggle('checked', e.target.checked);
+    });
+
+    document.getElementById('form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = document.getElementById('btn');
+      const result = document.getElementById('result');
+      btn.disabled = true;
+      btn.textContent = 'Hesaplanıyor...';
+      result.style.display = 'none';
+
+      const fd = new FormData(e.target);
+
+      const payload = {
+        net_m2: parseFloat(fd.get('net_m2')),
+        oda_sayisi: parseFloat(fd.get('oda_sayisi')),
+        salon_sayisi: parseInt(fd.get('salon_sayisi')),
+        banyo_sayisi: parseFloat(fd.get('banyo_sayisi')),
+        // Ordinal dropdowns send numeric values directly
+        bina_yasi: parseInt(fd.get('bina_yasi')),
+        bulundugu_kat: parseInt(fd.get('bulundugu_kat')),
+        kat_sayisi: parseInt(fd.get('kat_sayisi')),
+        balkon: fd.get('balkon') === 'on',
+        asansor: fd.get('asansor') === 'on',
+        otopark: fd.get('otopark') === 'on',
+        esyali: fd.get('esyali') === 'on',
+        site_icerisinde: fd.get('site_icerisinde') === 'on',
+        isinma: fd.get('isinma'),
+        mahalle: fd.get('mahalle'),
+      };
+
+      try {
+        const res = await fetch('/predict', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+
+        result.style.display = 'block';
+        if (res.ok) {
+          result.className = 'result success';
+          document.getElementById('price-text').textContent =
+            data.predicted_price.toLocaleString('tr-TR') + ' ₺';
+          document.getElementById('error-text').textContent = '';
+        } else {
+          result.className = 'result error';
+          document.getElementById('price-text').textContent = '';
+          const msg = data.detail?.[0]?.msg ?? data.detail ?? 'Bir hata oluştu.';
+          document.getElementById('error-text').textContent = msg;
+        }
+      } catch {
+        result.style.display = 'block';
+        result.className = 'result error';
+        document.getElementById('error-text').textContent = 'Sunucuya bağlanılamadı.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Tahmin Et';
+      }
+    });
+  </script>
+</body>
+
+</html>
